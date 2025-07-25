@@ -1,15 +1,19 @@
+// src/config.ts
+import { config } from 'dotenv';
 import { User, Note, Deck, Flashcard, CardStatus, Course, Task, TimetableEntry, NoteFolder, DeckFolder } from './types';
 
-// IMPORTANT: To enable data persistence, create a free account at jsonbin.io,
-// create a new JSON bin, and paste your API Key and the Bin ID here.
-export const JSONBIN_API_KEY = '$2a$10$mkJixj86OGhG86LqPcEOGukIrddONhgzGzUMmNcAUOaqwo80vZY2e'; // e.g. '$2b$10$xyz...'
-export const JSONBIN_BIN_ID = '6882d369ae596e708fbb5263'; // e.g. '60f8b1a3a4b4d44e4a3b1c2d'
+// Load variables from .env (ignored by Git)
 
+
+// ---- Secrets (only here) ----
+export const JSONBIN_API_KEY = process.env.JSONBIN_API_KEY!;
+export const JSONBIN_BIN_ID  = process.env.JSONBIN_BIN_ID!;
 export const LOGIN_CREDENTIALS = {
-  username: 'ryx13',
-  password: 'bambino@1305'
+  username: process.env.APP_USERNAME!,
+  password: process.env.APP_PASSWORD!
 };
 
+// ---- Public constants ----
 export const USER: User = {
   id: 'user-1',
   name: 'Ryan Dube',
@@ -17,8 +21,8 @@ export const USER: User = {
 };
 
 export const NOTE_FOLDERS: NoteFolder[] = [
-    { id: 'nf-1', name: 'Personal Projects' },
-    { id: 'nf-2', name: 'Goals' },
+  { id: 'nf-1', name: 'Personal Projects' },
+  { id: 'nf-2', name: 'Goals' },
 ];
 
 export const NOTES: Note[] = [
@@ -63,7 +67,7 @@ function toggleDarkMode() {
 ];
 
 export const DECK_FOLDERS: DeckFolder[] = [
-    { id: 'df-1', name: 'Language Learning' },
+  { id: 'df-1', name: 'Language Learning' },
 ];
 
 export const DECKS: Deck[] = [
@@ -116,25 +120,25 @@ export const FLASHCARDS: Flashcard[] = [
 ];
 
 export const COURSES: Course[] = [
-    { id: 'course-1', name: 'Intro to Computer Science', code: 'CS 101', instructor: 'Dr. Alan Turing', color: 'blue', term: 'Semester 1' },
-    { id: 'course-2', name: 'Calculus I', code: 'MATH 150', instructor: 'Dr. Isaac Newton', color: 'red', term: 'Semester 1' },
-    { id: 'course-3', name: 'World History', code: 'HIST 210', instructor: 'Dr. Herodotus', color: 'yellow', term: 'Full Year' },
+  { id: 'course-1', name: 'Intro to Computer Science', code: 'CS 101', instructor: 'Dr. Alan Turing', color: 'blue', term: 'Semester 1' },
+  { id: 'course-2', name: 'Calculus I', code: 'MATH 150', instructor: 'Dr. Isaac Newton', color: 'red', term: 'Semester 1' },
+  { id: 'course-3', name: 'World History', code: 'HIST 210', instructor: 'Dr. Herodotus', color: 'yellow', term: 'Full Year' },
 ];
 
 export const TASKS: Task[] = [
-    { id: 'task-1', title: 'Homework 1', completed: true, courseId: 'course-1', dueDate: '2024-06-03', grade: 85, maxGrade: 100, weight: 10 },
-    { id: 'task-2', title: 'Homework 2', completed: true, courseId: 'course-1', dueDate: '2024-06-09', grade: 95, maxGrade: 100, weight: 10 },
-    { id: 'task-3', title: 'Midterm Exam', completed: false, courseId: 'course-1', weight: 30, dueDate: '2024-06-20' },
-    { id: 'task-4', title: 'Quiz 1', completed: true, courseId: 'course-2', dueDate: '2024-06-04', grade: 8, maxGrade: 10, weight: 5 },
-    { id: 'task-5', title: 'Quiz 2', completed: false, courseId: 'course-2', weight: 5, dueDate: '2024-06-11' },
-    { id: 'task-6', title: 'Read Chapter 3', completed: true, courseId: 'course-3', weight: 0 },
-    { id: 'task-7', title: 'Schedule dentist appointment', completed: false },
+  { id: 'task-1', title: 'Homework 1', completed: true, courseId: 'course-1', dueDate: '2024-06-03', grade: 85, maxGrade: 100, weight: 10 },
+  { id: 'task-2', title: 'Homework 2', completed: true, courseId: 'course-1', dueDate: '2024-06-09', grade: 95, maxGrade: 100, weight: 10 },
+  { id: 'task-3', title: 'Midterm Exam', completed: false, courseId: 'course-1', weight: 30, dueDate: '2024-06-20' },
+  { id: 'task-4', title: 'Quiz 1', completed: true, courseId: 'course-2', dueDate: '2024-06-04', grade: 8, maxGrade: 10, weight: 5 },
+  { id: 'task-5', title: 'Quiz 2', completed: false, courseId: 'course-2', weight: 5, dueDate: '2024-06-11' },
+  { id: 'task-6', title: 'Read Chapter 3', completed: true, courseId: 'course-3', weight: 0 },
+  { id: 'task-7', title: 'Schedule dentist appointment', completed: false },
 ];
 
 export const TIMETABLE: TimetableEntry[] = [
-    { id: 'tt-1', courseId: 'course-1', day: 'Monday', startTime: '10:00', endTime: '11:30', location: 'Hall A' },
-    { id: 'tt-2', courseId: 'course-2', day: 'Monday', startTime: '13:00', endTime: '14:30', location: 'Hall B' },
-    { id: 'tt-3', courseId: 'course-1', day: 'Wednesday', startTime: '10:00', endTime: '11:30', location: 'Hall A' },
-    { id: 'tt-4', courseId: 'course-3', day: 'Wednesday', startTime: '15:00', endTime: '17:00', location: 'Hall C' },
-    { id: 'tt-5', courseId: 'course-2', day: 'Friday', startTime: '13:00', endTime: '14:30', location: 'Hall B' },
+  { id: 'tt-1', courseId: 'course-1', day: 'Monday', startTime: '10:00', endTime: '11:30', location: 'Hall A' },
+  { id: 'tt-2', courseId: 'course-2', day: 'Monday', startTime: '13:00', endTime: '14:30', location: 'Hall B' },
+  { id: 'tt-3', courseId: 'course-1', day: 'Wednesday', startTime: '10:00', endTime: '11:30', location: 'Hall A' },
+  { id: 'tt-4', courseId: 'course-3', day: 'Wednesday', startTime: '15:00', endTime: '17:00', location: 'Hall C' },
+  { id: 'tt-5', courseId: 'course-2', day: 'Friday', startTime: '13:00', endTime: '14:30', location: 'Hall B' },
 ];
